@@ -1,6 +1,6 @@
 project_name = "jenkins-pipeline-seeds"
 repo = "git@github.com:SaituXx/test-jenkings.git"
-repo_name = "repo"
+repo_name = "test-jenkings"
  pipelineJob(project_name) {
     definition {
        triggers{

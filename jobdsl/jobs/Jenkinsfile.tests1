@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    options {
+      disableConcurrentBuilds()
+    }
+
+    parameters {
+      choice(name: 'DEPLOY_TO', choices: "staging\nproduction", description: 'Which environment do you want to deploy?' )
+      booleanParam(name: 'BACKUP_DATABASE', defaultValue: true, description: 'Backup database (dump)')
+    }
+
+    environment {
+      drush = 'vendor/bin/drush'
+    }
+
+    stages {
+
+      stage("Deploy: vars") {
+        steps {
+          script {
+            switch (params.DEPLOY_TO) {
+              case "staging":
+                env.DEPLOY_SSH = "metadropweb-stg@metadrop-stg.metadrop.pro"
+                env.DEPLOY_URL = "https://metadrop-stg.metadrop.pro"
+                break;
+              case "production":
+                env.DEPLOY_SSH = "metadropweb-pro@metadrop.net"
+                env.DEPLOY_URL = "https://metadrop.net"
+                break;
+            }
+          }
+        }
+      }

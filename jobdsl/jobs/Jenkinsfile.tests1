@@ -21,12 +21,11 @@ pipeline {
           script {
             switch (params.DEPLOY_TO) {
               case "staging":
-                env.DEPLOY_SSH = "metadropweb-stg@metadrop-stg.metadrop.pro"
-                env.DEPLOY_URL = "https://metadrop-stg.metadrop.pro"
-                break;
+                env.DEPLOY_SSH = ""
+                env.DEPLOY_URL = ""
               case "production":
-                env.DEPLOY_SSH = "metadropweb-pro@metadrop.net"
-                env.DEPLOY_URL = "https://metadrop.net"
+                env.DEPLOY_SSH = ""
+                env.DEPLOY_URL = ""
                 break;
             }
           }

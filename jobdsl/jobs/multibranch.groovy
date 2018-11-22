@@ -28,6 +28,6 @@ folder('jenkins-pipeline-seeds-folder') {
 
 
 
-folder('project-a/testing') {
+folder('jenkins-pipeline-seeds-folder/testing') {
     description('Folder containing all QA jobs for project A')
 }
